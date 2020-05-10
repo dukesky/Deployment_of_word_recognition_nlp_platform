@@ -18,3 +18,10 @@ var/
 
 # Serverless directories
 .serverless
+
+# jupyter information
+.ipynb_checkpoints/
+__pycache__/
+
+# vscode
+.vscode/

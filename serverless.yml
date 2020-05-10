@@ -1,14 +1,11 @@
-
-
 service: ner-api
 
 
 provider:
   name: aws
-  runtime: python3.7
+  runtime: python3.6
   stage: dev
   region: us-west-1
-
 
 package:
  exclude:
@@ -17,6 +14,7 @@ package:
    - __pycache__/**
    - .ipynb_checkpoints/**
    - (*).ipynb
+
 
 functions:
   recognize-named-entites:
@@ -29,17 +27,16 @@ functions:
           method: post
 
 
-custom: 
-  pythonRequirements:
-    dockerizePip: true
-    slim: true
-    zip: true
-    noDeploy: []
-    useDownloadCache: true
-    useStaticCache: true
-    
-
-
 
 plugins:
   - serverless-python-requirements
+
+custom: 
+  pythonRequirements:
+    dockerizePip: non-linux
+    # pythonBin: python
+    # slim: true
+    zip: true
+    # noDeploy: []
+    # useDownloadCache: true
+    # useStaticCache: true

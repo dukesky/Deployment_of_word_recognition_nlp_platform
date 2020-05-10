@@ -7,7 +7,7 @@ except ImportError as error:
 
 import json
 
-import spacy
+# import spacy
 import en_core_web_sm
 
 MODEL = en_core_web_sm.load()
@@ -23,6 +23,7 @@ def create_ner_spans(text):
             'end': ent.end_char,
             'type': ent.label_,
         }
+        spans.append(span) 
     return spans
 
 
@@ -50,12 +51,3 @@ def handle_request(event, context):
     }
 
     return response
-
-    # Use this code if you don't use the http event with the LAMBDA-PROXY
-    # integration
-    """
-    return {
-        "message": "Go Serverless v1.0! Your function executed successfully!",
-        "event": event
-    }
-    """

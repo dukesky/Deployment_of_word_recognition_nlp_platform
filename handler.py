@@ -7,7 +7,7 @@ except ImportError as error:
 
 import json
 
-# import spacy
+from spacy import displacy
 import en_core_web_sm
 
 MODEL = en_core_web_sm.load()
@@ -51,3 +51,33 @@ def handle_request(event, context):
     }
 
     return response
+
+def recognize_named_tag(event, context):
+
+    request_body = event['body']
+    text = json.loads(request_body)['text']
+    print('received test from http post: ',text)
+    
+    if text is not None:
+        doc = MODEL(text)
+        parse = displacy.parse_deps(doc) 
+
+    setting = {}
+    setting['lang'] = 'en'
+    setting['direction'] = 'ltr'
+
+    parse['setting'] = setting
+
+    print('parse after create: ',parse)
+    body = parse
+
+    response = {
+        "statusCode": 200,
+        "body": json.dumps(body),
+        "headers": {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        }
+    }
+
+    return response    

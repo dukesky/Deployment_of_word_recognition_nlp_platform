@@ -25,7 +25,15 @@ functions:
       - http: 
           path: ner
           method: post
-
+          
+  recognize-named-tag:
+    handler: handler.recognize_named_tag
+    memorySize: 1536
+    timeout: 30
+    events: 
+      - http: 
+          path: tag
+          method: post
 
 
 plugins:

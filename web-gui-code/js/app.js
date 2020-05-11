@@ -3,10 +3,10 @@
 const housingEndpoint = 'https://kojphf9nv9.execute-api.us-west-1.amazonaws.com/dev/get-price';
 
 // Endpoint URL for Named Entity Recognition
-const nerEndpoint = '';
+const nerEndpoint = 'https://53ziklfdud.execute-api.us-west-1.amazonaws.com/dev/ner';
 
 // Endpoint URL for PoS tagging and dependency parsing
-const parseEndpoint = ''; 
+const parseEndpoint = 'https://53ziklfdud.execute-api.us-west-1.amazonaws.com/dev/tag'; 
 
 // S3 bucket name for image uploads
 const uploadBucketName = '';
